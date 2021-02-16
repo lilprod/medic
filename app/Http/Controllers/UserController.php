@@ -25,11 +25,13 @@ class UserController extends Controller
     public function index()
     {
         //Get all users and pass it to the view
-        $users = User::all();
+        //$users = User::all();
 
-        $roles = Role::whereNotIn('id', array(3))->get();
+        $users = User::where('role_id', 3)->get();
 
-        return view('users.index', ['roles' => $roles, 'users' => $users]);
+        $roles = Role::whereNotIn('id', array(1,2))->get();
+
+        return view('admin.administrators.index', ['roles' => $roles, 'users' => $users]);
 
         //return view('users.index')->with('users', $users);
     }
@@ -44,11 +46,10 @@ class UserController extends Controller
         //Get all roles and pass it to the view
         //$roles = Role::get();
         //Role::whereNotIn('id', array(1, 7, 21))->get();
-        $roles = Role::whereNotIn('id', array(2))->get();
+        $roles = Role::whereNotIn('id', array(1,2))->get();
         //dd($roles);
 
-        return view('users.create', ['roles' => $roles]);
-        //return view('users.create', compact('roles'));
+        return view('admin.administrators', ['roles' => $roles]);
 
     }
 
@@ -110,8 +111,8 @@ class UserController extends Controller
                 $user->assignRole($role_r); //Assigning role to user
             }
         }
-        //Redirect to the users.index view and display message
-        return redirect()->route('users.index')
+        //Redirect to the admin.users.index view and display message
+        return redirect()->route('admin.users.index')
             ->with('success',
              'Utilisateur ajouté avec succès.');
     }
@@ -137,9 +138,9 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id); //Get user with specified id
         //$roles = Role::get(); //Get all roles
-        $roles = Role::whereNotIn('id', array(2))->get();
+        $roles = Role::whereNotIn('id', array(1,2))->get();
 
-        return view('users.edit', compact('user', 'roles')); //pass user and roles data to view
+        return view('admin.administrators.edit', compact('user', 'roles')); //pass user and roles data to view
     }
 
     /**
@@ -203,7 +204,7 @@ class UserController extends Controller
             $user->roles()->detach(); //If no role is selected remove exisiting role associated to a user
         }
 
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
             ->with('success',
              'Utilisateur edité avec succès.');
     }
@@ -223,7 +224,7 @@ class UserController extends Controller
         }
         $user->delete();
 
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
             ->with('success',
              'Utilisateur supprimé avec succès.');
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Post;
-use App\Category;
-use App\Country;
+use App\Models\User;
+use App\Models\Offer;
+use App\Models\Category;
+use App\Models\Country;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,13 +14,14 @@ class PagesController extends Controller
 {
     public function index()
     {
-        //Get all posts and pass it to the view
-        $posts = Post::with('category')
+        //Get all offers and pass it to the view
+
+        /*$offers = Offer::with('category')
                         ->orderBy('created_at', 'desc')
                         ->limit(3)
-                        ->get();
+                        ->get();*/
 
-        foreach ($posts as $post) {
+        /*foreach ($posts as $post) {
             # code...
            $user = User::findOrFail($post->user_id);
 
@@ -29,9 +30,11 @@ class PagesController extends Controller
            $post->author = $user->name;
 
            //$post->author = $user->name.' '.$user->firstname;
-        }
+        }*/
 
-        return view('pages.index')->with('posts', $posts);
+       // return view('pages.index')->with('posts', $posts);
+
+        return view('pages.index');
     }
 
     public function getCountries(Request $request)
@@ -44,6 +47,16 @@ class PagesController extends Controller
     public function about()
     {
         return view('pages.about');
+    }
+
+    public function staff()
+    {
+        return view('pages.staff');
+    }
+
+    public function institution()
+    {
+        return view('pages.institutions');
     }
 
     public function blog()

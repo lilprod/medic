@@ -22,7 +22,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all(); //Get all categories
 
-        return view('categories.index')->with('categories', $categories);
+        return view('admin.categories.index')->with('categories', $categories);
     }
 
     /**
@@ -32,7 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('admin.categories.create');
     }
 
     public function check_slug(Request $request)
@@ -73,9 +73,9 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
             ->with('success',
-             'Category added successfully.');
+             'Catégorie ajoutée avec succès.');
     }
 
     /**
@@ -88,7 +88,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         
-        return view('categories.show', compact('category'));
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -101,7 +101,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         
-        return view('categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -128,9 +128,9 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
             ->with('success',
-             'Category updated successfully.');
+             'Catégorie éditée avec succès.');
     
     }
 
@@ -148,6 +148,6 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')
             ->with('success',
-             'Category deleted successfully.');
+             'Catégorie supprimée avec succès.');
     }
 }

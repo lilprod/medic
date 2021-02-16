@@ -25,7 +25,7 @@ class RoleController extends Controller
 
         $permissions = Permission::all(); //Get all permissions
 
-        return view('roles.index', ['permissions' => $permissions, 'roles' => $roles]);
+        return view('admin.roles.index', ['permissions' => $permissions, 'roles' => $roles]);
 
         //return view('roles.index')->with('roles', $roles);
     }
@@ -39,7 +39,7 @@ class RoleController extends Controller
     {
         $permissions = Permission::all(); //Get all permissions
 
-        return view('roles.create', ['permissions' => $permissions]);
+        return view('admin.roles.create', ['permissions' => $permissions]);
     }
 
     /**
@@ -72,7 +72,7 @@ class RoleController extends Controller
             $role->givePermissionTo($p);
         }
 
-        return redirect()->route('roles.index')
+        return redirect()->route('admin.roles.index')
             ->with('success',
              'Rôle '.$role->name.' ajouté!');
     }
@@ -99,7 +99,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
 
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -133,7 +133,7 @@ class RoleController extends Controller
             $role->givePermissionTo($p);  //Assign permission to role
         }
 
-        return redirect()->route('roles.index')
+        return redirect()->route('admin.roles.index')
             ->with('success',
              'Rôle '.$role->name.' modifié!');
     }
@@ -149,7 +149,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return redirect()->route('roles.index')
+        return redirect()->route('admin.roles.index')
             ->with('success',
              'Rôle supprimé!');
     }

@@ -23,6 +23,10 @@ class CreateOffersTable extends Migration
             $table->string('attach_file')->nullable();
             $table->mediumText('video_url')->nullable();
             $table->integer('category_id')->nullable();
+            $table->string('region')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->mediumText('meta_description')->nullable();
             $table->integer('user_id');

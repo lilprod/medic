@@ -27,7 +27,7 @@ class PermissionController extends Controller
 
         //return view('permissions.index')->with('permissions', $permissions);
 
-        return view('permissions.index', ['permissions' => $permissions, 'roles' => $roles]);
+        return view('admin.permissions.index', ['permissions' => $permissions, 'roles' => $roles]);
     }
 
     /**
@@ -39,7 +39,7 @@ class PermissionController extends Controller
     {
         $roles = Role::get(); //Get all roles
 
-        return view('permissions.create')->with('roles', $roles);
+        return view('admin.permissions.create')->with('roles', $roles);
     }
 
     /**
@@ -71,7 +71,7 @@ class PermissionController extends Controller
             }
         }
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('admin.permissions.index')
             ->with('success',
              'Permission '.$permission->name.' ajoutée!');
     }
@@ -97,7 +97,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::findOrFail($id);
 
-        return view('permissions.edit', compact('permission'));
+        return view('admin.permissions.edit', compact('permission'));
     }
 
     /**
@@ -116,7 +116,7 @@ class PermissionController extends Controller
         $input = $request->all();
         $permission->fill($input)->save();
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('admin.permissions.index')
             ->with('success',
              'Permission '.$permission->name.' modifiée!');
     }
@@ -140,7 +140,7 @@ class PermissionController extends Controller
 
         $permission->delete();
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('admin.permissions.index')
             ->with('success',
              'Permission supprimée!');
     }
