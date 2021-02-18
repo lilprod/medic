@@ -63,11 +63,11 @@ class PagesController extends Controller
     {
         $categories = Category::all();
 
-        $latestposts = Post::orderBy('created_at', 'desc')
+        $latestposts = Offer::orderBy('created_at', 'desc')
                             ->limit(3)
                             ->get();
 
-        $posts = Post::with('category')
+        $posts = Offer::with('category')
                          ->orderBy('created_at', 'desc')
                          ->paginate(2);
 
@@ -83,18 +83,18 @@ class PagesController extends Controller
         }
 
 
-        return view('pages.blog',compact('posts', 'categories', 'latestposts'));
+        return view('pages.offers',compact('posts', 'categories', 'latestposts'));
     }
 
     public function postDetails($slug){
 
         $categories = Category::all();
 
-        $latestposts = Post::orderBy('created_at', 'desc')
+        $latestposts = Offer::orderBy('created_at', 'desc')
                             ->limit(3)
                             ->get();
 
-        $post = Post::with('category')->where('slug',$slug)->first();
+        $post = Offer::with('category')->where('slug',$slug)->first();
 
         $user = User::findOrFail($post->user_id);
 
@@ -102,7 +102,7 @@ class PagesController extends Controller
 
         $post->author = $user->name;
 
-        return view('pages.blog_single',compact('post', 'categories', 'latestposts'));
+        return view('pages.offer_detail',compact('post', 'categories', 'latestposts'));
     }
 
     /*public function posts(){

@@ -34,12 +34,12 @@
                 <h5 class="widget-title">Pages du site</h5>
                 <nav>
                    <ul class="quick-links">
-                      <li><a href="#">Accueil</a></li>
-                      <li><a href="#">Contact</a></li>
-                      <li><a href="#">Notre Agence</a></li>
-                      <li><a href="#">Etablissements de santé</a></li>
-                      <li><a href="#">Nos offres</a></li>
-                      <li><a href="#">Personnel médical</a></li>
+                      <li><a href="{{route('home')}}">Accueil</a></li>
+                      <li><a href="{{route('contact')}}">Contact</a></li>
+                      <li><a href="{{route('about')}}">Notre Agence</a></li>
+                      <li><a href="{{route('institution')}}">Etablissements de santé</a></li>
+                      <li><a href="{{route('blog')}}">Nos offres</a></li>
+                      <li><a href="{{route('staff')}}">Personnel médical</a></li>
                       <li><a href="#">Mentions Légales et RGPD</a></li>
                    </ul>
                 </nav>

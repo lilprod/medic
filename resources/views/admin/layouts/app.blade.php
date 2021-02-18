@@ -93,7 +93,7 @@
                   </li>
 
                   <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">https</i></span><span class="pc-mtext">Rôles</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">lock</i></span><span class="pc-mtext">Rôles</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.roles.index')}}">Rôles</a></li>
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.roles.create')}}">Ajouter</a></li>
@@ -109,7 +109,23 @@
                  </li>
 
                  <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">home</i></span><span class="pc-mtext">Spécialités</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                     <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">widgets</i></span><span class="pc-mtext">Structures</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                     <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.structures.index')}}">Structures</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.structures.create')}}">Ajouter</a></li>
+                     </ul>
+                  </li>
+
+                  <li class="pc-item pc-hasmenu">
+                     <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">widgets</i></span><span class="pc-mtext">Services</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                     <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.services.index')}}">Services</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('admin.services.create')}}">Ajouter</a></li>
+                     </ul>
+                  </li>
+
+                 <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">widgets</i></span><span class="pc-mtext">Spécialités</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.specialities.index')}}">Spécialités</a></li>
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.specialities.create')}}">Ajouter</a></li>
@@ -117,7 +133,7 @@
                  </li>
 
                  <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">home</i></span><span class="pc-mtext">Catégories</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">edit</i></span><span class="pc-mtext">Catégories</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.categories.index')}}">Catégories</a></li>
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.categories.create')}}">Ajouter</a></li>
@@ -125,7 +141,7 @@
                  </li>
 
                  <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">home</i></span><span class="pc-mtext">Offres</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">library_add_check</i></span><span class="pc-mtext">Offres</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.offers.index')}}">Offres</a></li>
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.offers.create')}}">Ajouter</a></li>
@@ -134,7 +150,7 @@
 
 
                  <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">account_circle</i></span><span class="pc-mtext">Personnels Médicaux</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                    <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">portrait</i></span><span class="pc-mtext">Personnels Médicaux</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.staffs.index')}}">Personnels Médicaux</a></li>
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.staffs.create')}}">Ajouter</a></li>
@@ -235,6 +251,19 @@
       <script src="{{asset('assets/admin/assets/js/plugins/feather.min.js') }}"></script>
       <script src="{{asset('assets/admin/assets/js/pcoded.min.js') }}"></script>
 
+      <!-- Ckeditor js -->
+      <script src="{{asset('assets/admin/assets/js/plugins/ckeditor.js') }}"></script>
+      <script type="text/javascript">
+         $(window).on('load', function() {
+            $(function() {
+                  ClassicEditor.create(document.querySelector('#classic-editor'))
+                     .catch(error => {
+                        console.error(error);
+                     });
+            });
+         });
+      </script>
+
       <!--<script src="{{asset('assets/admin/assets/js/plugins/jquery.dataTables.min.js') }}"></script>
       <script src="{{asset('assets/admin/assets/js/plugins/dataTables.bootstrap4.min.js') }}"></script>
       <script>
@@ -281,7 +310,10 @@
       @stack('institution')
       @stack('staff')
       @stack('category')
+      @stack('service')
+      @stack('structure')
       @stack('speciality')
+      @stack('scripts')
       @stack('slug')
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
       <!-- <script src="assets/js/plugins/clipboard.min.js"></script> -->

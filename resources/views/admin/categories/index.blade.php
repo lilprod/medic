@@ -25,6 +25,7 @@
 <div class="row">
     <!-- subscribe start -->
     <div class="col-sm-12">
+        @include('inc.messages')
         <div class="card">
             <div class="card-header">
                 <h5> Liste des catégories </h5>
@@ -49,9 +50,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            
+                            @foreach ($categories as $key=> $category)
                             <tr>
-                                <td></td>
+                                <td>{{$key+1}}</td>
                                 <td>{{$category->title}}</td>
                                 <td>
                                     <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-info btn-sm">Editer</a>

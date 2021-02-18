@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Offer extends Model
 {
@@ -26,16 +28,31 @@ class Offer extends Model
 
     public function getLink()
     {
-        return url('offer/'.$this->slug);
+        return url('offre/'.$this->slug);
     }
 
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Models\Category');
+    }
+
+    public function structure()
+    {
+        return $this->belongsTo('App\Models\Structure');
+    }
+
+    public function service()
+    {
+        return $this->belongsTo('App\Models\Service');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function applies()
+    {
+        return $this->hasMany('App\Models\Apply');
     }
 }

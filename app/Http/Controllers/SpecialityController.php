@@ -69,7 +69,7 @@ class SpecialityController extends Controller
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
 
             // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/specialities/cover_images', $fileNameToStore);
         } else {
             $fileNameToStore = 'cover_image.jpg';
         }
@@ -84,7 +84,7 @@ class SpecialityController extends Controller
 
         return redirect()->route('admin.specialities.index')
             ->with('success',
-             'Speciality added successfully.');
+             'Specialité ajoutée avec succès.');
     }
 
     /**
@@ -124,7 +124,7 @@ class SpecialityController extends Controller
     {
         $speciality = Speciality::findOrFail($id); //Get speciality specified by id
 
-        //Validate name, email and password fields
+        //Validate these fields
         $this->validate($request, [
             'title' => 'required|max:120',
             'description' => 'nullable',
@@ -145,7 +145,7 @@ class SpecialityController extends Controller
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
 
             // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/specialities/cover_images', $fileNameToStore);
         } else {
             $fileNameToStore = 'cover_image.jpg';
         }
@@ -160,7 +160,7 @@ class SpecialityController extends Controller
 
         return redirect()->route('admin.specialities.index')
             ->with('success',
-             'Speciality updated successfully.');
+             'Specialité éditée avec succès.');
     }
 
     /**
@@ -171,15 +171,15 @@ class SpecialityController extends Controller
      */
     public function destroy($id)
     {
-        //Find a user with a given id and delete
+        //Find a speciality with a given id and delete
         $speciality = Speciality::findOrFail($id);
         if ($speciality->file != 'cover_image.jpg') {
-            Storage::delete('public/cover_images/'.$speciality->file);
+            Storage::delete('public/specialities/cover_images/'.$speciality->file);
         }
         $speciality->delete();
 
         return redirect()->route('admin.specialities.index')
             ->with('success',
-             'Speciality deleted successfully.');
+             'Specialité supprimée avec succès.');
     }
 }

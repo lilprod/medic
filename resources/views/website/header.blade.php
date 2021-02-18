@@ -33,55 +33,81 @@
                       <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                    </div>
                    <div class="classynav">
-                      <ul id="nav">
-                         <li><a href="{{route('home')}}">Accueil</a></li>
-                         <li><a href="#">Nos offres</a></li>
-                         <li><a href="{{route('institution')}}">Etablissements de santé</a></li>
-                         <li><a href="{{route('staff')}}">Personnel Médical</a></li>
-                         <li><a href="{{route('about')}}">Notre Agence</a></li>
-                         <li><a href="{{route('inscription')}}">Inscription</a></li>
-                         <li><a href="{{route('contact')}}">Contact</a></li>
-                         <!--<li>
-                            <a href="#">Pages</a>
-                            <ul class="dropdown">
-                               <li><a href="index.html">- Home</a></li>
-                               <li><a href="about.html">- About Us</a></li>
-                               <li><a href="service.html">- Service</a></li>
-                               <li><a href="pricing.html">- Pricing</a></li>
-                               <li><a href="blog.html">- Blog</a></li>
-                               <li><a href="blog-details.html">- Blog Details</a></li>
-                               <li><a href="contact.html">- Contact</a></li>
-                               <li>
-                                  <a href="#">- Dropdown</a>
-                                  <ul class="dropdown">
-                                     <li><a href="#">- Dropdown Item</a></li>
-                                     <li>
-                                        <a href="#">- Dropdown Item</a>
-                                        <ul class="dropdown">
-                                           <li><a href="#">- Even Dropdown</a></li>
-                                           <li><a href="#">- Even Dropdown</a></li>
-                                           <li><a href="#">- Even Dropdown</a></li>
-                                           <li><a href="#">- Even Dropdown</a></li>
-                                        </ul>
-                                     </li>
-                                     <li><a href="#">- Dropdown Item</a></li>
-                                     <li><a href="#">- Dropdown Item</a></li>
-                                  </ul>
-                               </li>
-                            </ul>
-                         </li>-->
-                         
-                         
-                         <!--<li><a href="pricing.html">Pricing</a></li>-->
-                         <!--<li>
-                            <a href="#">Blog</a>
-                            <ul class="dropdown">
-                               <li><a href="blog.html">- Blog</a></li>
-                               <li><a href="blog-details.html">- Blog Details</a></li>
-                            </ul>
-                         </li>-->
-                         
-                      </ul>
+
+                     @guest
+
+                     <ul id="nav">
+                        <li><a href="{{route('home')}}">Accueil</a></li>
+                        <li><a href="{{route('blog')}}">Nos offres</a></li>
+                        <li><a href="{{route('institution')}}">Etablissements de santé</a></li>
+                        <li><a href="{{route('staff')}}">Personnel Médical</a></li>
+                        <li><a href="{{route('about')}}">Notre Agence</a></li>
+                        <li><a href="{{route('inscription')}}">Inscription</a></li>
+                        <li><a href="{{route('contact')}}">Contact</a></li>
+                        <!--<li>
+                           <a href="#">Pages</a>
+                           <ul class="dropdown">
+                              <li><a href="index.html">- Home</a></li>
+                              <li><a href="about.html">- About Us</a></li>
+                              <li><a href="service.html">- Service</a></li>
+                              <li><a href="pricing.html">- Pricing</a></li>
+                              <li><a href="blog.html">- Blog</a></li>
+                              <li><a href="blog-details.html">- Blog Details</a></li>
+                              <li><a href="contact.html">- Contact</a></li>
+                              <li>
+                                 <a href="#">- Dropdown</a>
+                                 <ul class="dropdown">
+                                    <li><a href="#">- Dropdown Item</a></li>
+                                    <li>
+                                       <a href="#">- Dropdown Item</a>
+                                       <ul class="dropdown">
+                                          <li><a href="#">- Even Dropdown</a></li>
+                                          <li><a href="#">- Even Dropdown</a></li>
+                                          <li><a href="#">- Even Dropdown</a></li>
+                                          <li><a href="#">- Even Dropdown</a></li>
+                                       </ul>
+                                    </li>
+                                    <li><a href="#">- Dropdown Item</a></li>
+                                    <li><a href="#">- Dropdown Item</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>-->
+                        
+                        
+                        <!--<li><a href="pricing.html">Pricing</a></li>-->
+                        <!--<li>
+                           <a href="#">Blog</a>
+                           <ul class="dropdown">
+                              <li><a href="blog.html">- Blog</a></li>
+                              <li><a href="blog-details.html">- Blog Details</a></li>
+                           </ul>
+                        </li>-->
+                        
+                     </ul>
+                     @else
+                     <ul id="nav">
+                        <li><a href="{{route('home')}}">Accueil</a></li>
+                        <li><a href="{{route('blog')}}">Nos offres</a></li>
+                        <li><a href="{{route('institution')}}">Etablissements de santé</a></li>
+                        <li><a href="{{route('staff')}}">Personnel Médical</a></li>
+                        <li><a href="{{route('about')}}">Notre Agence</a></li>
+                        <li><a href="{{route('contact')}}">Contact</a></li>
+                        <li>
+                           <a href="#"><i class="fa fa-user"></i> {{auth()->user()->name}}</a>
+                           <ul class="dropdown">
+                              <li><a href="{{route('dashboard')}}">- Tableau de bord</a></li>
+                              <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">- Déconnexion</a></li>
+
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                 @csrf
+                              </form>
+                           </ul>
+                        </li>
+                     </ul>
+                     @endguest
+                      
                    </div>
                 </div>
                 <!--<a href="#" class="btn dento-btn booking-btn">Booking Now</a>-->

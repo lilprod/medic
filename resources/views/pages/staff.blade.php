@@ -46,6 +46,101 @@
 
      <!--Content-->
 
+     <section class="dento-about-us-area mt-50">
+      <div class="container">
+         <div class="row align-items-center">
+
+            <div class="col-lg-12">
+               <div class="about-us-content mb-50">
+
+                  <h6>Rejoignez la communauté des 15 000 médecins avec qui nous sommes en lien constant. Toute l’année des missions de remplacements de courte, moyenne ou longue durée partout en France</h6>
+                  
+                  <p class="text-justify"><i class="fa fa-square"></i> Choisissez-nous ! On vous contactera dès qu’une opportunité qui vous ressemble se présente.
+                  </p>
+                  <p class="text-justify"><i class="fa fa-square"></i> Quelle que soit votre spécialité, on est toujours à la recherche de nouveaux médecins pour rejoindre notre communauté.</p>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="dento-blog-area section-padding-10-0 clearfix">
+      <div class="container">
+         <div class="row">
+            <div class="col-12">
+               <div class="section-heading">
+                  <h6>Les services + d’Allo Médic Assistance :</h6>
+                  <div class="line"></div>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+
+            <div class="col-12 col-md-6 col-lg-4">
+               <div class="single-blog-item mb-100">
+                  <img src="{{asset('assets/website/img/bg-img/Etablissement-de-santé-1.png') }}" alt="">
+                  
+                  <div class="blog-content">
+
+                        <p class="text-justify"><i class="fa fa-square"></i> Un référent dédié, par spécialité médicale.</p>
+                        <p class="text-justify"><i class="fa fa-square"></i> On tient compte de vos préférences (secteur géographique, particularités de la mission…)</p>
+                        <p class="text-justify"><i class="fa fa-square"></i> On connait bien votre métier et votre spécialité.</p>
+                     
+                     <div class="post-meta">
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+               <div class="single-blog-item mb-100">
+                  <img src="{{asset('assets/website/img/bg-img/Personnel-medical-2.png') }}" alt="">
+
+                  <div class="blog-content">
+
+                        <p class="text-justify"><i class="fa fa-square"></i> On facilite votre intégration au sein de l’établissement de santé qui vous accueille.</p>
+                        <p class="text-justify"><i class="fa fa-square"></i> On vous aide à préparer vos déplacements ainsi que vos séjours.</p>
+                        <p class="text-justify"><i class="fa fa-square"></i> On vous conseille (conseils juridique et fiscaux, contrats d’assurance professionnelle, etc.)</p>
+                     
+                     <div class="post-meta">
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+               <div class="single-blog-item mb-100">
+  
+                  <img src="{{asset('assets/website/img/bg-img/Personnel-medical-3.png') }}" alt="">
+             
+                  <div class="blog-content">
+                    
+                     <p class="text-justify"><i class="fa fa-square"></i>  On organise votre planning. Confiez-le nous!</p>
+                     <p class="text-justify"><i class="fa fa-square"></i>  On gère vos démarches administratives dans toutes vos missions de remplacement.</p>
+              
+                     <div class="post-meta">
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+      </div>
+   </section>
+
+
+   <section class="dento-blog-area section-padding-10-0 clearfix">
+      <div class="container">
+         <div class="row">
+            <div class="col-12 col-lg-12">
+               <p class="text-justify"> <b>Pour en savoir plus, <a href="#"><b>inscrivez-vous</b></a> sur notre site ou <a href="#"><b>contactez-nous</b></a>. Nos experts sont à votre écoute pour répondre à toutes vos questions.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
      <!--End Content-->
 
      <!-- footer-->

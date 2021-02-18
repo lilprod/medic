@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Category extends Model
 {
@@ -29,9 +31,9 @@ class Category extends Model
         return url('category/'.$this->slug);
     }
 
-    public function posts()
+    public function offers()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany('App\Models\Offer');
     }
 
     //other code

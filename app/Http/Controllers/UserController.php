@@ -46,10 +46,10 @@ class UserController extends Controller
         //Get all roles and pass it to the view
         //$roles = Role::get();
         //Role::whereNotIn('id', array(1, 7, 21))->get();
-        $roles = Role::whereNotIn('id', array(1,2))->get();
+        $roles = Role::whereNotIn('id', array(2,3))->get();
         //dd($roles);
 
-        return view('admin.administrators', ['roles' => $roles]);
+        return view('admin.administrators.create', ['roles' => $roles]);
 
     }
 
@@ -138,7 +138,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id); //Get user with specified id
         //$roles = Role::get(); //Get all roles
-        $roles = Role::whereNotIn('id', array(1,2))->get();
+        $roles = Role::whereNotIn('id', array(2,3))->get();
 
         return view('admin.administrators.edit', compact('user', 'roles')); //pass user and roles data to view
     }

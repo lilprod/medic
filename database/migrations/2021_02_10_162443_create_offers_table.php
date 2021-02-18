@@ -19,6 +19,16 @@ class CreateOffersTable extends Migration
             $table->string('slug');
             $table->mediumText('description')->nullable();
             $table->longText('body');
+            $table->string('reference')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->float('day_pay', 8, 2)->nullable();
+            $table->float('penalty', 8, 2)->nullable();
+            $table->float('hour_guard', 8, 2)->nullable();
+            $table->boolean('registered_with_council')->default(0);
+            $table->boolean('accom_meal_travel')->default(0);
+            $table->integer('structure_id')->nullable();
+            $table->integer('service_id')->nullable();
             $table->string('cover_image')->nullable();
             $table->string('attach_file')->nullable();
             $table->mediumText('video_url')->nullable();

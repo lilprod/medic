@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Institution;
+use App\Models\HealthInstitution;
 //Importing laravel-permission models
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -25,9 +25,9 @@ class InstitutionController extends Controller
     public function index()
     {
         //Get all users and pass it to the view
-        $institutions = Institution::all();
+        $institutions = HealthInstitution::all();
 
-        $roles = Role::whereNotIn('id', array(1,3))->get();
+        $roles = Role::whereNotIn('id', array(1,2))->get();
 
         return view('admin.institutions.index', ['roles' => $roles, 'institutions' => $institutions]);
     }
@@ -39,7 +39,9 @@ class InstitutionController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::whereNotIn('id', array(1,2))->get();
+
+        return view('admin.institutions.create', ['roles' => $roles]);
     }
 
     /**

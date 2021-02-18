@@ -69,17 +69,31 @@
               <div class="col-12 col-md-8">
                  <div class="contact-form">
                     <div class="section-heading">
-                       <h2>Rester en Contact</h2>
+                       <h2>Rester en contact avec nous</h2>
                        <div class="line"></div>
                     </div>
                     <form action="#" method="post">
                        <div class="row">
                           <div class="col-lg-6">
-                             <input type="text" name="message-name" class="form-control mb-30" placeholder="Votre nom">
+                             <input type="text" name="name" class="form-control mb-30" placeholder="Votre nom">
                           </div>
+
                           <div class="col-lg-6">
-                             <input type="email" name="message-email" class="form-control mb-30" placeholder="Votre adresse email">
+                           <input type="text" name="fistname" class="form-control mb-30" placeholder="Votre Prénom">
+                        </div>
+
+                          <div class="col-lg-6">
+                             <input type="email" name="email" class="form-control mb-30" placeholder="Votre adresse email">
                           </div>
+
+                          <div class="col-lg-6">
+                           <input type="text" name="phone_number" class="form-control mb-30" placeholder="Votre numéro de téléphone">
+                        </div>
+
+                        <div class="col-lg-12">
+                           <input type="text" name="subject" class="form-control mb-30" placeholder="Le sujet de votre message">
+                        </div>
+
                           <div class="col-12">
                              <textarea name="message" class="form-control mb-30" placeholder="Votre message"></textarea>
                           </div>

@@ -66,7 +66,7 @@ class CategoryController extends Controller
             ]
         );
 
-        $category = new Category(); //Get category specified by id
+        $category = new Category(); 
 
         $category->title = $request->input('title');
         $category->description = $request->input('description');
@@ -115,7 +115,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id); //Get speciality specified by id
 
-        //Validate name, email and password fields
+        //Validate these fields
         $this->validate($request, [
             'title' => 'required|max:120',
             'slug'  => 'required|min:3|max:255|unique:categories,id,' . $category->slug,
@@ -142,11 +142,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //Find a user with a given id and delete
+        //Find a category with a given id and delete
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
             ->with('success',
              'Catégorie supprimée avec succès.');
     }
