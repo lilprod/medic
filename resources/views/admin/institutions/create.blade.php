@@ -21,4 +21,37 @@
 </div>
 <!-- [ breadcrumb ] end -->
 
+<!-- [ Main Content ] start -->
+<div class="row">
+    <!-- subscribe start -->
+    <div class="col-sm-12">
+        @include('inc.messages')
+        <div class="card">
+            <div class="card-header">
+                <h5>Nouvel Etablissement de santé </h5>
+            </div>
+
+            <form method="POST" action="{{ route('admin.institutions.store') }}" enctype="multipart/form-data">
+                @csrf
+
+                <div class="card-body">
+
+                   <div class="row form-row">
+
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-block" id="submit">Ajouter Etablissement</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+
+@endsection
+
 @endsection

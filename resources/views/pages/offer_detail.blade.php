@@ -50,7 +50,7 @@
       <section class="dento--blog-area mt-50">
         <div class="container">
            <div class="row">
-              <div class="col-12 col-lg-10 mb-100">
+              <div class="col-12 col-lg-9 mb-100">
                  <div class="blog-details-area">
                     <!--<img src="img/bg-img/24.jpg" alt="">-->
                     <h2 class="post-title">{{$post->title}}</h2>

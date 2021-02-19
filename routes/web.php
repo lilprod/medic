@@ -31,7 +31,11 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Registration Routes...
 Route::get('inscription', 'Auth\RegisterController@showRegistrationForm')->name('inscription');
 
+Route::get('inscription/etablissement', 'Auth\RegisterController@showInstitutionRegistrationForm')->name('institution_inscription');
+
 Route::post('register', 'Auth\RegisterController@register')->name('register');
+
+Route::post('register/institution', 'Auth\RegisterController@registerInstitution')->name('register_inscription');
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

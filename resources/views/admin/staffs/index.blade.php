@@ -46,6 +46,7 @@
                             <tr>
                                 <th>Nom et Prénom(s)</th>
                                 <th>Email</th>
+                                <th>Téléphone</th>
                                 <th>Date/Heure d'ajout</th>
                                 <th>Rôle</th>
                                 <th style="width: 10%">Actions</th>
@@ -56,8 +57,9 @@
                             <tr>
                                 <td>{{ $staff->name }} {{ $staff->firstname }}</td>
                                 <td>{{ $staff->email }}</td>
+                                <td>{{ $staff->phone_number }}</td>
                                 <td>{{ $staff->created_at->format('F d, Y h:ia') }}</td>
-                                <td>{{ $staff->roles()->pluck('name')->implode(' ') }}</td>{{-- Retrieve array of roles associated to a user and convert to string --}}
+                                <td>{{ $staff->user->roles()->pluck('name')->implode(' ') }}</td>{{-- Retrieve array of roles associated to a user and convert to string --}}
                                 <td>
                                     <a href="{{ route('admin.staffs.edit', $staff->id) }}" class="btn btn-info btn-sm">Editer</a>
                                     <button class="btn btn-danger btn-sm" data-toggle="modal" onclick="deleteData({{ $staff->id}})" data-target="#confirm" data-original-title="Supprimer">Supprimer</button>

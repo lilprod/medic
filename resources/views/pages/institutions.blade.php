@@ -142,7 +142,7 @@
       <div class="container">
          <div class="row">
             <div class="col-12 col-lg-12">
-               <p class="text-justify"> <b>Pour en savoir plus, <a href="#"><b>inscrivez-vous</b></a> sur notre site ou <a href="#"><b>contactez-nous</b></a>. Nos experts sont à votre écoute pour répondre à toutes vos questions.</p>
+               <p class="text-justify"> <b>Pour en savoir plus, <a href="{{route('institution_inscription')}}"><b>inscrivez-vous</b></a> sur notre site ou <a href="#"><b>contactez-nous</b></a>. Nos experts sont à votre écoute pour répondre à toutes vos questions.</p>
             </div>
          </div>
       </div>

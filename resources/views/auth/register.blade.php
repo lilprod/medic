@@ -8,6 +8,17 @@
       <title>Allo Medic Assistance &amp; Inscription</title>
       <link rel="icon" href="img/core-img/favicon.ico">
       <link rel="stylesheet" href="{{asset('assets/website/style.css') }}">
+      <link rel="stylesheet" href="{{asset('css/intlTelInput.css') }}">
+
+      <style>
+        .iti { width: 100%; }
+
+        .iti__flag {background-image: url("{{asset('images/flags.png') }}");}
+
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .iti__flag {background-image: url("{{asset('images/flags@2x.png') }}");}
+        }
+      </style>
    </head>
    <body>
       <div id="preloader">
@@ -48,20 +59,37 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-12">
+                    @include('inc.messages')
                     <div class="card">
                        <!-- <div class="card-header">{{ __('Inscription') }}</div>-->
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register') }}">
-                                @csrf
 
-                                <!--<div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group row">
-                                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
+                                <div class="contact-form mt-30">
+                                    <p class="mb-30 text-justify">En tant que personnel médical, vous pouvez rejoindre notre réseau collaboratif. Vous recevrez dès lors nos offres d’emploi et pourrez y postuler.
+                                    Pour ceci, il vous suffit de remplir le formulaire d’inscription ci-dessous et nous vous contacterons dans les plus brefs délais.
+                                    </p>
+                
+                                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                                        @csrf
+                
+                                       <div class="row">
 
-                                            <div class="col-md-8">
-                                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Spécialité <span class="text-danger">*</span></label>
+                                                <select name="speciality_id" id="speciality_id" class="form-control mb-30" required>
+                                                    @foreach ($specialities as $speciality)
+                                                        <option value="{{$speciality->id}}">{{$speciality->title}}</option>	
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                         </div>
+                
+                                          <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Nom <span class="text-danger">*</span></label>
+                                                <input type="text" name="name" class="form-control mb-30  @error('name') is-invalid @enderror" placeholder="Nom" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
@@ -69,165 +97,121 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="form-group row">
-                                            <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Prénom(s)') }}</label>
-
-                                            <div class="col-md-8">
-                                                <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
-
+                                            
+                                          </div>
+                
+                                          <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Prénom(s) <span class="text-danger">*</span></label>
+                                                <input type="text" name="firstname" class="form-control mb-30 @error('firstname') is-invalid @enderror" placeholder=" Prénom(s)" value="{{ old('firstname') }}" required autocomplete="firstname">
+                                                
                                                 @error('firstname')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-                                        </div>
-                                    </div>
+                                            
+                                          </div>
+                                          
+                                          <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Date de naissance <span class="text-danger">*</span></label>
+                                                <input type="date" name="birth_date" class="form-control mb-30 @error('birth_date') is-invalid @enderror" value="{{ old('birth_date') }}" required autocomplete="birth_date">
 
-                                    <div class="col-lg-6">
-                                        <div class="form-group row">
-                                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
-        
-                                            <div class="col-md-8">
-                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-        
+                                                @error('birth_date')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            
+                                          </div>
+
+                                          <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Civilité <span class="text-danger">*</span></label><br>
+                                                <div class="form-check form-check-inline mb-30">
+                                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="M">
+                                                    <label class="form-check-label" for="inlineRadio1">Mr</label>
+                                                </div>
+                                                <div class="form-check form-check-inline mb-30">
+                                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="F">
+                                                    <label class="form-check-label" for="inlineRadio2">Mme</label>
+                                                </div>
+                                            </div>
+                                            
+                                          </div>
+
+                                          <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Adresse <span class="text-danger">*</span></label>
+                                                <input type="text" name="address" class="form-control mb-30 @error('address') is-invalid @enderror" placeholder="Adresse" value="{{ old('address') }}" required autocomplete="address">
+                                                
+                                                @error('address')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            
+                                          </div>
+
+                                          <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Ville <span class="text-danger">*</span></label>
+                                                <input type="text" name="city" class="form-control mb-30 @error('city') is-invalid @enderror" placeholder="Ville" value="{{ old('city') }}" required autocomplete="city">
+
+                                                @error('city')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            
+                                          </div>
+
+                                          <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Code postal <span class="text-danger">*</span></label>
+                                                <input type="text" name="postal_code" class="form-control mb-30 @error('postal_code') is-invalid @enderror" placeholder="Code postal" value="{{ old('postal_code') }}" required autocomplete="postal_code">
+
+                                                @error('postal_code')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            
+                                          </div>
+                
+                                          <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Adresse email <span class="text-danger">*</span></label>
+                                                <input type="email" name="email" class="form-control mb-30 @error('email') is-invalid @enderror" placeholder="Adresse email" value="{{ old('email') }}" required autocomplete="email">
+
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-                                        </div>
-                                    </div>
+                                            
+                                          </div>
+                
+                                          <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Téléphone <span class="text-danger">*</span></label>
+                                                <input id="output" type="hidden" name="phone_number" value=""/>
+                                                <input type="tel" id="phone" name="" class="form-control mb-30 @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}" required autocomplete="phone_number">
 
-                                    <div class="col-lg-6">
-                                        <div class="form-group row">
-                                            <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Téléphone') }}</label>
-        
-                                            <div class="col-md-8">
-                                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number">
-        
                                                 @error('phone_number')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="form-group row">
-                                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
-        
-                                            <div class="col-md-8">
-                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-        
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-lg-6">
-                                        <div class="form-group row">
-                                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Resaisir Mot de passe') }}</label>
-        
-                                            <div class="col-md-8">
-                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn dento-btn">
-                                            {{ __('S\'inscrire') }}
-                                        </button>
-                                    </div>
-                                </div>-->
-
-                                <div class="contact-form mt-30">
-                                    <p class="mb-30 text-justify">En tant que personnel médical, vous pouvez rejoindre notre réseau collaboratif. Vous recevrez dès lors nos offres d’emploi et pourrez y postuler.
-                                    Pour ceci, il vous suffit de remplir le formulaire d’inscription ci-dessous et nous vous contacterons dans les plus brefs délais.
-                                    </p>
-                
-                                    <form action="#" method="post">
-                
-                                       <div class="row">
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Spécialité</label>
-                                                <select name="speciality_id" id="speciality_id" class="form-control mb-30">
-                                                    @foreach ($specialities as $speciality)
-                                                        <option value="{{$speciality->id}}">{{$speciality->title}}</option>	
-                                                    @endforeach
-                                                    		
-                                                </select>
-                                            </div>
-                                         </div>
-                
-                                          <div class="col-lg-6">
-                                            <label>Nom <span class="text-danger">*</span></label>
-                                             <input type="text" name="name" class="form-control mb-30" placeholder="Nom" required>
-                                          </div>
-                
-                                          <div class="col-lg-6">
-                                            <label>Prénom(s)</label>
-                                             <input type="text" name="firstname" class="form-control mb-30" placeholder=" Prénom(s)" required>
-                                          </div>
-                                          
-                                          <div class="col-lg-6">
-                                            <label>Date de naissance</label>
-                                             <input type="date" name="birth_date" class="form-control mb-30" required>
-                                          </div>
-
-                                          <div class="col-lg-6">
-                                            <label>Civilité <span class="text-danger">*</span></label><br>
-                                              <div class="form-check form-check-inline mb-30">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M">
-                                                <label class="form-check-label" for="inlineRadio1">Mr</label>
-                                              </div>
-                                              <div class="form-check form-check-inline mb-30">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="F">
-                                                <label class="form-check-label" for="inlineRadio2">Mme</label>
-                                              </div>
-                                          </div>
-
-                                          <div class="col-lg-4">
-                                            <label>Adresse <span class="text-danger">*</span></label>
-                                             <input type="text" name="address" class="form-control mb-30" placeholder="Adresse" required>
-                                          </div>
-
-                                          <div class="col-lg-4">
-                                            <label>Ville <span class="text-danger">*</span></label>
-                                             <input type="text" name="city" class="form-control mb-30" placeholder="Ville" required>
-                                          </div>
-
-                                          <div class="col-lg-4">
-                                            <label>Code postal <span class="text-danger">*</span></label>
-                                             <input type="text" name="postal_code" class="form-control mb-30" placeholder="Code postal" required>
-                                          </div>
-                
-                                          <div class="col-lg-6">
-                                            <label>Adresse email <span class="text-danger">*</span></label>
-                                             <input type="email" name="email" class="form-control mb-30" placeholder="Adresse email" required>
-                                          </div>
-                
-                                          <div class="col-lg-6">
-                                            <label>Téléphone <span class="text-danger">*</span></label>
-                                            <input type="text" name="phone_number" class="form-control mb-30" placeholder="Téléphone" required>
+                                            
                                          </div>
 
                                          <div class="col-lg-12">
@@ -250,19 +234,19 @@
                 
                                           <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="checkbox" name="registered_with_council" class="sjb-required" id="registered_with_council" required="required"> Inscrit au Conseil de l'Ordreation sur la détention de données.  
+                                                <input type="checkbox" name="registered_with_council" class="sjb-required" id="registered_with_council" onclick="$(this).attr('value', this.checked ? 1 : 0)" value="0"> Inscrit au Conseil de l'Ordreation sur la détention de données.  
                                             </div>
                                           </div>
 
                                           <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="checkbox" name="qualified_by_council" class="sjb-required" id="qualified_by_council" required="required"> Qualifié par le Conseil de l'Ordre  
+                                                <input type="checkbox" name="qualified_by_council" class="sjb-required" id="qualified_by_council" onclick="$(this).attr('value', this.checked ? 1 : 0)" value="0"> Qualifié par le Conseil de l'Ordre  
                                             </div>
                                           </div>
 
                                           <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>Joindre vos documents <span class="text-danger">*</span></label><br>
+                                                <label>Joindre vos documents <br>
                                                 <input type="file" name="documents[]" id="documents" class="mb-30" multiple>
                                             </div>
                                          </div>
@@ -270,28 +254,28 @@
                                          <div class="col-lg-6">
                                          </div>
 
-                                          <div class="col-lg-6">
+                                          <div class="col-lg-12">
                                             <div class="form-group">
-                                                <input type="checkbox" name="jobapp_rgpd[]" class="sjb-required" id="jobapp_rgpd" required="required"> J'accepte les conditions d'Allo Medic Assistance concernant la nouvelle réglementation sur la détention de données.  
+                                                <label>RGPD <span class="text-danger">*</span> </label><br>
+                                                <input type="checkbox" name="jobapp_rgpd[]" class="sjb-required" id="agree" required="required" onclick="checkbox();">  J'accepte les conditions d'Allo Medic Assistance concernant la nouvelle réglementation sur la détention de données.  
                                             </div>
                                           </div>
 
-                                          
-                
-                
                                           <div class="col-12">
-                                             <textarea name="message" class="form-control mb-30" placeholder="Votre Message"></textarea>
+                                            <div class="form-group">
+                                                <label>Message / Questions</label>
+                                                <textarea name="message" class="form-control mb-30" placeholder="Votre Message"></textarea>
+                                            </div>
                                           </div>
                 
                                           <div class="col-12">
-                                             <button type="submit" class="btn dento-btn">S'inscrire</button>
+                                             <button type="submit" class="btn dento-btn" id="submit" disabled>S'inscrire</button>
                                           </div>
                                        </div>
                 
                                     </form>
                                  </div>
 
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -301,8 +285,61 @@
     <!-- footer-->
     @include('website.footer')
     <!--End  footer-->
-    
+
     <script src="{{asset('assets/website/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/intlTelInput.js') }}"></script>
+    <script>
+        var input = document.querySelector("#phone");
+        output = document.querySelector("#output");
+        var iti = window.intlTelInput(input, {
+            // allowDropdown: false,
+            // autoHideDialCode: false,
+            // autoPlaceholder: "off",
+            // dropdownContainer: document.body,
+            // excludeCountries: ["us"],
+            // formatOnDisplay: false,
+            // geoIpLookup: function(callback) {
+            //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+            //     var countryCode = (resp && resp.country) ? resp.country : "";
+            //     callback(countryCode);
+            //   });
+            // },
+            // hiddenInput: "full_number",
+            // initialCountry: "auto",
+            // localizedCountries: { 'de': 'Deutschland' },
+            // nationalMode: false,
+            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+            // placeholderNumberType: "MOBILE",
+            // preferredCountries: ['cn', 'jp'],
+            separateDialCode: true,
+            utilsScript: "{{asset('js/utils.js') }}" // just for formatting/placeholders etc
+        });
+      
+        var handleChange = function() {
+          var text = iti.getNumber();
+          //var text = iti.getNumber(intlTelInputUtils.numberFormat.E164);
+          
+          var textNode = document.createTextNode(text);
+          output.innerHTML = "";
+          output.appendChild(textNode);
+          document.getElementById("output").value=text;
+        };
+      
+        // listen to "keyup", but also "change" to update when the user selects a country
+        input.addEventListener('change', handleChange);
+        input.addEventListener('keyup', handleChange); 
+    </script>
+
+    <script>
+        function checkbox(){
+           if(document.getElementById('agree').checked){
+               document.getElementById('submit').disabled = '';
+           }
+           else{
+               document.getElementById('submit').disabled = 'disabled';
+           }
+       }
+     </script>
     <script src="{{asset('assets/website/js/popper.min.js') }}"></script>
     <script src="{{asset('assets/website/js/bootstrap.min.js') }}"></script>
     <script src="{{asset('assets/website/js/dento.bundle.js') }}"></script>

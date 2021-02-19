@@ -27,6 +27,17 @@
       <!-- vendor css -->
       <link rel="stylesheet" href="{{asset('assets/admin/assets/css/style.css') }}" id="main-style-link">
       <link rel="stylesheet" href="{{asset('assets/admin/assets/css/customizer.css') }}">
+      <link rel="stylesheet" href="{{asset('css/intlTelInput.css') }}">
+
+      <style>
+        .iti { width: 100%; }
+
+        .iti__flag {background-image: url("{{asset('images/flags.png') }}");}
+
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .iti__flag {background-image: url("{{asset('images/flags@2x.png') }}");}
+        }
+      </style>
       
    </head>
 
@@ -251,6 +262,49 @@
       <script src="{{asset('assets/admin/assets/js/plugins/feather.min.js') }}"></script>
       <script src="{{asset('assets/admin/assets/js/pcoded.min.js') }}"></script>
 
+      <script type="text/javascript" src="{{asset('js/intlTelInput.js') }}"></script>
+      <script>
+         var input = document.querySelector("#phone");
+         output = document.querySelector("#output");
+         var iti = window.intlTelInput(input, {
+               // allowDropdown: false,
+               // autoHideDialCode: false,
+               // autoPlaceholder: "off",
+               // dropdownContainer: document.body,
+               // excludeCountries: ["us"],
+               // formatOnDisplay: false,
+               // geoIpLookup: function(callback) {
+               //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+               //     var countryCode = (resp && resp.country) ? resp.country : "";
+               //     callback(countryCode);
+               //   });
+               // },
+               // hiddenInput: "full_number",
+               // initialCountry: "auto",
+               // localizedCountries: { 'de': 'Deutschland' },
+               // nationalMode: false,
+               // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+               // placeholderNumberType: "MOBILE",
+               // preferredCountries: ['cn', 'jp'],
+               separateDialCode: true,
+               utilsScript: "{{asset('js/utils.js') }}" // just for formatting/placeholders etc
+         });
+         
+         var handleChange = function() {
+            var text = iti.getNumber();
+            //var text = iti.getNumber(intlTelInputUtils.numberFormat.E164);
+            
+            var textNode = document.createTextNode(text);
+            output.innerHTML = "";
+            output.appendChild(textNode);
+            document.getElementById("output").value=text;
+         };
+         
+         // listen to "keyup", but also "change" to update when the user selects a country
+         input.addEventListener('change', handleChange);
+         input.addEventListener('keyup', handleChange); 
+      </script>
+
       <!-- Ckeditor js -->
       <script src="{{asset('assets/admin/assets/js/plugins/ckeditor.js') }}"></script>
       <script type="text/javascript">
@@ -264,13 +318,6 @@
          });
       </script>
 
-      <!--<script src="{{asset('assets/admin/assets/js/plugins/jquery.dataTables.min.js') }}"></script>
-      <script src="{{asset('assets/admin/assets/js/plugins/dataTables.bootstrap4.min.js') }}"></script>
-      <script>
-        // DataTable start
-        $('#report-table').DataTable();
-        // DataTable end
-      </script>-->
 
       <!-- datatable Js -->
       <script src="{{asset('assets/admin/assets/js/plugins/jquery.dataTables.min.js') }}"></script>
