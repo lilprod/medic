@@ -15,7 +15,7 @@ class CreateHealthInstitutionsTable extends Migration
     {
         Schema::create('health_institutions', function (Blueprint $table) {
             $table->id();
-            $table->integer('type_id')->nullable();
+            $table->integer('structure_id')->nullable();
             $table->string('registration')->nullable();
             $table->string('matricule')->nullable();
             $table->string('name');

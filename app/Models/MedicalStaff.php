@@ -13,4 +13,9 @@ class MedicalStaff extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function speciality()
+    {
+        return $this->belongsTo('App\Models\Structure');
+    }
 }

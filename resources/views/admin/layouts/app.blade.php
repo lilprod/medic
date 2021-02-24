@@ -94,7 +94,9 @@
                   <li class="pc-item"><a href="{{route('dashboard')}}" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">home</i></span><span class="pc-mtext">Dashboard</span></a></li>
 
                   <li class="pc-item"><a href="{{route('home')}}" class="pc-link " target="_blank"><span class="pc-micon"><i class="material-icons-two-tone">storefront</i></span><span class="pc-mtext">Retour au site</span></a></li>
-
+                  
+                  @can('Admin Permissions')
+                  
                   <li class="pc-item pc-hasmenu">
                      <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">https</i></span><span class="pc-mtext">Permissions</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                      <ul class="pc-submenu">
@@ -175,6 +177,8 @@
                        <li class="pc-item"><a class="pc-link" href="{{route('admin.institutions.create')}}">Ajouter</a></li>
                     </ul>
                  </li>
+
+                 @endcan
                 </ul>
             </div>
          </div>
@@ -208,17 +212,17 @@
                   
                   <li class="dropdown pc-h-item">
                      <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                     <img src="{{asset('assets/admin/assets/images/user/avatar-2.jpg') }}" alt="user-image" class="user-avtar">
+                     <img src="{{url('/storage/profile_images/'.auth()->user()->profile_picture ) }}" alt="user-image" class="user-avtar">
                      <span>
                      <span class="user-name">{{Auth()->user()->name}} {{Auth()->user()->firstname}}</span>
                      <span class="user-desc">Administrator</span>
                      </span>
                      </a>
                      <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
-                        <div class=" dropdown-header">
+                        <!--<div class=" dropdown-header">
                            <h5 class="text-overflow m-0"><span class="badge bg-light-success">Pro</span></h5>
-                        </div>
-                        <a href="#" class="dropdown-item">
+                        </div>-->
+                        <a href="{{ route('profils.index') }}" class="dropdown-item">
                         <i class="material-icons-two-tone">account_circle</i>
                         <span>Profile</span>
                         </a>

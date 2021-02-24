@@ -94,6 +94,11 @@ class StaffController extends Controller
             'email' => $request['email'],
             'password' => 'password',
             'phone_number' => $request['phone_number'],
+            'gender' => $request['gender'],
+            'address' => $request['address'],
+            'city' => $request['city'],
+            'postal_code' => $request['postal_code'],
+            'birth_date' => $request['birth_date'],
             'role_id' => 2,
             'profile_picture' => $fileNameToStore,
         ]);
@@ -264,6 +269,16 @@ class StaffController extends Controller
         $user->firstname = $request['firstname'];
 
         $user->email = $request['email'];
+
+        $user->city = $request['city'];
+
+        $user->address = $request['address'];
+
+        $user->postal_code = $request['postal_code'];
+        
+        $user->gender = $request['gender'];
+
+        $user->birth_date = $request['birth_date'];
 
         $user->phone_number = $request['phone_number'];
         

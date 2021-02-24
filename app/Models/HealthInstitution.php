@@ -13,4 +13,9 @@ class HealthInstitution extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function structure()
+    {
+        return $this->belongsTo('App\Models\Structure');
+    }
 }

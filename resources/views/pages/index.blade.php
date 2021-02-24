@@ -11,10 +11,15 @@
 
       <style>
          .icon-circle.icon-xl {
-            width: 137px;
+           /* width: 137px;
             height: 137px;
             line-height: 135px;
             font-size: 50px;
+            position: absolute;
+            max-height: 35px;
+            z-index: 2;
+            top: 50%;
+            left: 50%;*/
          }
       </style>
    </head>
@@ -36,13 +41,12 @@
                  <div class="row h-100 align-items-center">
                     <div class="col-12">
                        <div class="welcome-text text-center">
-                          <h2 data-animation="fadeInUp" data-delay="100ms">We Believe Everyone Should Have Easy Access To Great Dental Care</h2>
-                          <p data-animation="fadeInUp" data-delay="300ms">As a leading industry innovator, Dento is opening up exciting new opportunities for dental professionals, investors, employees & suppliers. Contact us to find out what we have to
-                             offer you.
+                          <h2 data-animation="fadeInUp" data-delay="100ms">Allo Medic Assistance</h2>
+                          <p data-animation="fadeInUp" data-delay="300ms">Mon Partenaire en remplacement médical
                           </p>
                           <div class="welcome-btn-group">
-                             <a href="#" class="btn dento-btn mx-2" data-animation="fadeInUp" data-delay="500ms">Get Started</a>
-                             <a href="#" class="btn dento-btn mx-2 active" data-animation="fadeInUp" data-delay="700ms">Contact Us</a>
+                             <a href="{{route('about')}}" class="btn dento-btn mx-2" data-animation="fadeInUp" data-delay="500ms">Notre agence</a>
+                             <a href="{{route('contact')}}" class="btn dento-btn mx-2 active" data-animation="fadeInUp" data-delay="700ms">Contactez-nous</a>
                           </div>
                        </div>
                     </div>
@@ -54,13 +58,12 @@
                  <div class="row h-100 align-items-center">
                     <div class="col-12">
                        <div class="welcome-text text-center">
-                          <h2 data-animation="fadeInDown" data-delay="100ms">We Believe Everyone Should Have Easy Access To Great Dental Care</h2>
-                          <p data-animation="fadeInDown" data-delay="300ms">As a leading industry innovator, Dento is opening up exciting new opportunities for dental professionals, investors, employees & suppliers. Contact us to find out what we have to
-                             offer you.
+                          <h2 data-animation="fadeInDown" data-delay="100ms">Allo Medic Assistance</h2>
+                          <p data-animation="fadeInDown" data-delay="300ms">Mon Partenaire en remplacement médical
                           </p>
                           <div class="welcome-btn-group">
-                             <a href="#" class="btn dento-btn mx-2" data-animation="fadeInDown" data-delay="500ms">Get Started</a>
-                             <a href="#" class="btn dento-btn mx-2 active" data-animation="fadeInDown" data-delay="700ms">Contact Us</a>
+                             <a href="{{route('about')}}" class="btn dento-btn mx-2" data-animation="fadeInDown" data-delay="500ms">Notre agence</a>
+                             <a href="{{route('contact')}}" class="btn dento-btn mx-2 active" data-animation="fadeInDown" data-delay="700ms">Contactez-nous</a>
                           </div>
                        </div>
                     </div>
@@ -118,11 +121,94 @@
         </div>
      </section>
 
-     <div class="container">
-        <div class="dento-border clearfix"></div>
-     </div>
+     <section class="dento-services-area mt-50 mb-50">
+      <div class="container">
 
-     <section class="dento-service-area section-padding-100-0 bg-img bg-gradient-overlay jarallax clearfix" style="background-image: url('{{asset('assets/website/img/bg-img/13.jpg') }}');">
+         <div class="section-heading text-center">
+            <h2>Nos services</h2>
+            <div class="line"></div>
+         </div>
+
+         <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4">
+               <div class="single-service--area text-center mb-50">
+                  <div class="icon--">
+                     <img src="{{asset('assets/website/img/core-img/contact.png') }}" alt="">
+                  </div>
+                  <h5>NOS OFFRES</h5>
+                  <h6>Réactivité et solution « gagnant-gagnant »</h6><br>
+                  <p class="text-justify">Dès qu’une offre est disponible, on la diffuse ! 
+                  On veille à trouver la meilleure adéquation entre médecin et établissement de santé qui cherchent 
+                  une solution de remplacement.
+                 </p>   
+               </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4">
+               <div class="single-service--area text-center mb-50">
+                  <div class="icon--">
+                    <img src="{{asset('assets/website/img/core-img/hospital.png') }}" alt="">
+                  </div>
+                  <h5>ÉTABLISSEMENTS DE SANTÉ</h5>
+                  <h6>Vos démarches simplifiées et la continuité des services, assurée</h6><br>
+                  <p class="text-justify">On s’engage à vous accompagner et à prendre en charge
+                  la gestion des plannings de votre personnel pour assurer la continuité des services.</p>
+               </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4">
+               <div class="single-service--area text-center mb-50">
+                  <div class="icon--">
+                     <img src="{{asset('assets/website/img/core-img/med.png') }}" alt="">
+                  </div>
+                  <h5>PERSONNEL MÉDICAL​</h5>
+                  <h6>Des remplacements qui vous ressemblent</h6>
+                  <p class="text-justify">Notre équipe s’engage à vous contacter régulièrement pour vous proposer des missions de remplacements de courte, moyenne et longue durée, en accord avec votre expérience et vos préférences.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4">
+               <div class="single-service--area text-center mb-50">
+                  <div class="icon--">
+                     <img src="{{asset('assets/website/img/core-img/home.png') }}" alt="">
+                  </div>
+                  <h5>NOTRE AGENCE</h5>
+                  <h6>Une équipe disponible qui cultive la proximité</h6>
+                  <p class="text-justify">On simplifie vos démarches et on reste à votre disposition en permanence pour vous aider à accomplir au mieux votre mission.</p>
+               </div>
+            </div>
+
+            <!--<div class="col-12 col-sm-6 col-lg-4">
+               <div class="single-service--area text-center mb-50">
+                  <div class="icon--">
+                     <img src="img/core-img/s10.png" alt="">
+                  </div>
+                  <h5>Examination</h5>
+                  <p>In pretium neque a libero congue. Elit diam lectus. Prasent lacinia vitae sit
+                     mattis mollis maximus.
+                  </p>
+               </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+               <div class="single-service--area text-center mb-50">
+                  <div class="icon--">
+                     <img src="img/core-img/s6.png" alt="">
+                  </div>
+                  <h5>Teeth Pain</h5>
+                  <p>In pretium neque a libero congue. Elit diam lectus. Prasent lacinia vitae sit
+                     mattis mollis maximus.
+                  </p>
+               </div>
+            </div>-->
+         </div>
+      </div>
+   </section>
+
+     <!--<div class="container">
+        <div class="dento-border clearfix"></div>
+     </div>-->
+
+     <!--<section class="dento-service-area section-padding-100-0 bg-img bg-gradient-overlay jarallax clearfix" style="background-image: url('{{asset('assets/website/img/bg-img/13.jpg') }}');">
         <div class="container">
            <div class="row align-items-center">
               <div class="col-lg-12 ">
@@ -135,7 +221,7 @@
 
                        <div class="col-md-3">
                           <div class="single-service mb-70">
-                             <!--<img src="img/core-img/s1.png" alt="">-->
+                             <img src="img/core-img/s1.png" alt="">
                              <div class="icon-circle icon-xl text-middle text-white">
                                  <i class="fa fa-vcard-o" aria-hidden="true"></i>
                              </div>
@@ -148,7 +234,7 @@
 
                        <div class="col-md-3">
                           <div class="single-service mb-70">
-                            <!-- <img src="img/core-img/s2.png" alt="">-->
+                             <img src="img/core-img/s2.png" alt="">
                              <div class="icon-circle icon-xl text-middle text-white">
                                  <i class="fa fa-hospital-o" aria-hidden="true"></i>
                              </div>
@@ -160,7 +246,7 @@
 
                        <div class="col-md-3">
                           <div class="single-service mb-70">
-                            <!-- <img src="img/core-img/s3.png" alt="">-->
+                            <img src="img/core-img/s3.png" alt="">
                              <div class="icon-circle icon-xl text-middle text-white">
                                  <i class="fa fa-user-md" aria-hidden="true"></i>
                              </div>
@@ -172,7 +258,7 @@
 
                        <div class="col-md-3">
                           <div class="single-service mb-70">
-                             <!--<img src="{{asset('assets/website/img/core-img/s4.png') }}" alt="">-->
+                             <img src="{{asset('assets/website/img/core-img/s4.png') }}" alt="">
                              <div class="icon-circle icon-xl text-middle text-white">
                               <i class="fa fa-home" aria-hidden="true"></i>
                              </div>
@@ -182,7 +268,7 @@
                           </div>
                        </div>
 
-                      <!-- <div class="col-6 col-md-4">
+                      <div class="col-6 col-md-4">
                           <div class="single-service mb-70">
                              <img src="img/core-img/s5.png" alt="">
                              <h6>Examination</h6>
@@ -194,22 +280,22 @@
                              <img src="img/core-img/s1.png" alt="">
                              <h6>Teeth Pain</h6>
                           </div>
-                       </div>-->
+                       </div>
 
                     </div>
                  </div>
               </div>
-              <!--<div class="col-12 col-lg-6">
+              <div class="col-12 col-lg-6">
                  <div class="dento-video-area mb-100">
                     <img src="img/bg-img/14.jpg" alt="">
                     <a href="#" class="video-play-button"><i class="fa fa-play" aria-hidden="true"></i></a>
                  </div>
-              </div>-->
+              </div>
            </div>
         </div>
-     </section>
+     </section>-->
 
-     <section class="dento-blog-area section-padding-100-0 clearfix">
+     <section class="dento-blog-area section-padding-50-0 clearfix">
         <div class="container">
            <div class="row">
               <div class="col-12">
@@ -221,21 +307,23 @@
            </div>
            <div class="row">
 
+            @foreach ($posts as $post)
               <div class="col-12 col-md-6 col-lg-4">
                  <div class="single-blog-item mb-100">
-                    <a href="blog-details.html">
+                    <!--<a href="{{$post->getLink()}}">
                     <img src="img/bg-img/4.jpg" alt="">
-                    </a>
+                    </a>-->
                     <div class="blog-content">
-                       <a href="blog-details.html" class="post-title">How your mouth bacteria can harm your lungs</a>
-                       <p>Donec tempor, lorem et euismod eleifend, est lectus laoreet ante, sed accusan justo diam ...</p>
+                       <a href="{{$post->getLink()}}" class="post-title">{{$post->title}}</a>
+                       <p>{!! \Illuminate\Support\Str::limit($post->body, 100, '...') !!}</p>
                        <div class="post-meta">
-                          <a href="#"><i class="icon_clock_alt"></i> 28 Sep 2018</a>
-                          <a href="#"><i class="icon_chat_alt"></i> 3 Comments</a>
-                       </div>
+                        <a href="#"><i class="icon_clock_alt"></i> {{ $post->created_at->format('m/d/Y') }}</a>
+                        <a href="#"><i class="fa fa-map-marker"></i> {{$post->region}} </a>
+                      </div>
                     </div>
                  </div>
               </div>
+            @endforeach
 
            </div>
 

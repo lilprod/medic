@@ -16,12 +16,12 @@ class PagesController extends Controller
     {
         //Get all offers and pass it to the view
 
-        /*$offers = Offer::with('category')
+        $posts = Offer::with('category')
                         ->orderBy('created_at', 'desc')
                         ->limit(3)
-                        ->get();*/
+                        ->get();
 
-        /*foreach ($posts as $post) {
+        foreach ($posts as $post) {
             # code...
            $user = User::findOrFail($post->user_id);
 
@@ -30,11 +30,9 @@ class PagesController extends Controller
            $post->author = $user->name;
 
            //$post->author = $user->name.' '.$user->firstname;
-        }*/
+        }
 
-       // return view('pages.index')->with('posts', $posts);
-
-        return view('pages.index');
+        return view('pages.index')->with('posts', $posts);
     }
 
     public function getCountries(Request $request)

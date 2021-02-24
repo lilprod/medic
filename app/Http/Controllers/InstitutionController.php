@@ -92,6 +92,9 @@ class InstitutionController extends Controller
             'email' => $request['email'],
             'password' => 'password',
             'phone_number' => $request['phone_number'],
+            'address' => $request['address'],
+            'city' => $request['city'],
+            'postal_code' => $request['postal_code'],
             'role_id' => 3,
             'profile_picture' => $fileNameToStore,
         ]);
@@ -229,6 +232,12 @@ class InstitutionController extends Controller
         $user->firstname = $request['firstname'];
 
         $user->email = $request['email'];
+
+        $user->city = $request['city'];
+
+        $user->address = $request['address'];
+
+        $user->postal_code = $request['postal_code'];
 
         $user->phone_number = $request['phone_number'];
 

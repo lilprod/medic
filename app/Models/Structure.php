@@ -13,4 +13,9 @@ class Structure extends Model
     {
         return $this->hasMany('App\Models\Offer');
     }
+
+    public function institutions()
+    {
+        return $this->hasMany('App\Models\HealthInstitution');
+    }
 }

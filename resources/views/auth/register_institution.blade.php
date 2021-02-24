@@ -65,7 +65,7 @@
                        <!-- <div class="card-header">{{ __('Inscription') }}</div>-->
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('register_inscription') }}">
                                 @csrf
 
                                
@@ -78,7 +78,7 @@
                 
                                        <div class="row">
 
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Type d'établissement <span class="text-danger">*</span></label>
                                                 <select name="structure_id" id="structure_id" class="form-control mb-30" required>
@@ -89,7 +89,7 @@
                                             </div>
                                          </div>
                 
-                                          <div class="col-lg-12">
+                                          <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Nom <span class="text-danger">*</span></label>
                                                 <input type="text" name="name" class="form-control mb-30" placeholder="Nom" required>
@@ -128,11 +128,19 @@
                                           <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Téléphone <span class="text-danger">*</span></label>
-                                                <input type="text" name="phone_number" class="form-control mb-30" placeholder="Téléphone" required>
+                                                <input id="output" type="hidden" name="phone_number" value=""/>
+                                                <input type="tel" id="phone" name="" class="form-control mb-30 @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}" required autocomplete="phone_number">
+
+                                                @error('phone_number')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
+                                            
                                          </div>
 
-                                         <div class="col-lg-12">
+                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Comment vous nous avez connus ?</label>
                                                 <select name="how_find_us" id="how_find_us" class="form-control mb-30">

@@ -72,6 +72,14 @@ Route::get('categorie/check_slug', 'CategoryController@check_slug')->name('categ
 
 Route::get('offren/check_slug', 'OfferController@check_slug')->name('offre.check_slug');
 
+Route::resource('profils', 'ProfilController');
+
+Route::get('/setting', 'ProfilController@setting')->name('setting');
+
+Route::get('/edit/profil', 'ProfilController@editProfil')->name('editprofil');
+
+Route::post('/updatepassword', 'ProfilController@updatePassword')->name('updatepassword');
+
 Route::name('admin.')->group(function () {
 
     Route::group(['prefix' => 'admin'], function () {  

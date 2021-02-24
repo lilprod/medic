@@ -13,6 +13,7 @@ use App\Models\HealthInstitution;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -132,6 +133,11 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => 'password',
             'phone_number' => $data['phone_number'],
+            'gender' => $data['gender'],
+            'address' => $data['address'],
+            'city' => $data['city'],
+            'postal_code' => $data['postal_code'],
+            'birth_date' => $data['birth_date'],
             'role_id' => 2,
             'profile_picture' => $fileNameToStore,
         ]);
@@ -164,9 +170,15 @@ class RegisterController extends Controller
 
         $staff->how_find_us = $data['how_find_us'];
 
-        $staff->registered_with_council = $data['registered_with_council'];
+        if(isset($data['registered_with_council'])){
 
-        $staff->qualified_by_council = $data['qualified_by_council'];
+            $staff->registered_with_council = $data['registered_with_council'];
+        }
+
+        if(isset($data['qualified_by_council'])){
+            
+            $staff->qualified_by_council = $data['qualified_by_council'];
+        }
 
         $staff->message = $data['message'];
 
@@ -220,6 +232,9 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'password' => 'password',
             'phone_number' => $request['phone_number'],
+            'address' => $request['address'],
+            'city' => $request['city'],
+            'postal_code' => $request['postal_code'],
             'role_id' => 3,
             'profile_picture' => $fileNameToStore,
         ]);

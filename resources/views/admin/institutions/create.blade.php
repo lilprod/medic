@@ -37,6 +37,106 @@
                 <div class="card-body">
 
                    <div class="row form-row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Type d'établissement <span class="text-danger">*</span></label>
+                            <select name="structure_id" id="structure_id" class="form-control mb-30" required>
+                                @foreach ($structures as $structure)
+                                    <option value="{{$structure->id}}">{{$structure->title}}</option>	
+                                @endforeach	
+                            </select>
+                        </div>
+                     </div>
+
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Nom <span class="text-danger">*</span></label>
+                            <input type="text" name="name" class="form-control mb-30" placeholder="Nom de l'établissement" required>
+
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                      </div>
+
+                      
+                      <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Adresse <span class="text-danger">*</span></label>
+                            <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Adresse" value="{{ old('address') }}" required autocomplete="address">
+                            
+                            @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Ville <span class="text-danger">*</span></label>
+                            <input type="text" name="city" class="form-control @error('city') is-invalid @enderror" placeholder="Ville" value="{{ old('city') }}" required autocomplete="city">
+
+                            @error('city')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>  
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-goup">
+                            <label>Code postal <span class="text-danger">*</span></label>
+                            <input type="text" name="postal_code" class="form-control @error('postal_code') is-invalid @enderror" placeholder="Code postal" value="{{ old('postal_code') }}" required autocomplete="postal_code">
+
+                            @error('postal_code')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Adresse email <span class="text-danger">*</span></label>
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Adresse email" value="{{ old('email') }}" required autocomplete="email">
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Téléphone <span class="text-danger">*</span></label>
+                            <input id="output" type="hidden" name="phone_number" value=""/>
+                            <input type="tel" id="phone" name="" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}" required autocomplete="phone_number">
+
+                            @error('phone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        
+                     </div>
+
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Joindre vos documents <span class="text-danger">*</span></label><br>
+                            <input type="file" name="documents[]" id="documents" class="mb-30" multiple>
+                        </div>
+                     </div>
 
                     </div>
                 </div>
@@ -51,7 +151,5 @@
     </div>
 </div>
 <!-- [ Main Content ] end -->
-
-@endsection
 
 @endsection
